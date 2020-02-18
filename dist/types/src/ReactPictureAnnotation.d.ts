@@ -12,6 +12,7 @@ interface IReactPictureAnnotationProps {
     height: number;
     image: string;
     editable: boolean;
+    drawLabel: boolean;
     renderItemPreview: (editable: boolean, annotation: IAnnotation, onChange: (value: string) => void, onDelete: () => void) => React.ReactElement;
     onAnnotationUpdate?: (annotation: IAnnotation) => void;
     onAnnotationCreate?: (annotation: IAnnotation) => void;
@@ -23,6 +24,7 @@ export default class ReactPictureAnnotation extends React.Component<IReactPictur
     static defaultProps: {
         renderItemPreview: (editable: boolean, annotation: IAnnotation<import("./Shape").IShapeData>, onChange: (value: string) => void, onDelete: () => void) => JSX.Element;
         editable: boolean;
+        drawLabel: boolean;
     };
     shapes: IShape[];
     currentTransformer: ITransformer;

@@ -83,7 +83,7 @@ export default class ReactPictureAnnotation extends React.Component {
                 let hasSelectedItem = false;
                 for (const item of this.shapes) {
                     const isSelected = item.getAnnotationData().id === this.selectedId;
-                    const { x, y, height } = item.paint(this.canvas2D, this.calculateShapePosition, isSelected);
+                    const { x, y, height } = item.paint(this.canvas2D, this.calculateShapePosition, isSelected, this.props.drawLabel);
                     if (isSelected) {
                         if (!this.currentTransformer ||
                             this.currentTransformer.id !== item.getAnnotationData().id) {
@@ -396,7 +396,8 @@ export default class ReactPictureAnnotation extends React.Component {
 }
 ReactPictureAnnotation.defaultProps = {
     renderItemPreview: (editable, annotation, onChange, onDelete) => (React.createElement(DefaultInputSection, { editable: editable, annotation: annotation, onChange: onChange, onDelete: onDelete })),
-    editable: false
+    editable: false,
+    drawLabel: true
 };
 export const getPinchMidpoint = (touches) => {
     const touch1 = touches[0];

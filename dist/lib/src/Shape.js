@@ -33,7 +33,7 @@ export class RectShape {
             }
             return false;
         };
-        this.paint = (canvas2D, calculateTruePosition, selected) => {
+        this.paint = (canvas2D, calculateTruePosition, selected, drawLabel) => {
             const { mark } = this.annotationData;
             const { x, y, width, height } = calculateTruePosition(mark);
             canvas2D.save();
@@ -49,7 +49,7 @@ export class RectShape {
             }
             else {
                 const { comment } = this.annotationData;
-                if (comment) {
+                if (comment && drawLabel) {
                     canvas2D.font = `${shapeStyle.fontSize}px ${shapeStyle.fontFamily}`;
                     const metrics = canvas2D.measureText(comment);
                     canvas2D.save();

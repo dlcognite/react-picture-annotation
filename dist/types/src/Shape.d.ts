@@ -31,7 +31,7 @@ export interface IShape {
     onDragStart: (positionX: number, positionY: number) => void;
     onDrag: (positionX: number, positionY: number) => void;
     checkBoundary: (positionX: number, positionY: number) => boolean;
-    paint: (canvas2D: CanvasRenderingContext2D, calculateTruePosition: (shapeData: IShapeBase) => IShapeBase, selected: boolean) => IShapeBase;
+    paint: (canvas2D: CanvasRenderingContext2D, calculateTruePosition: (shapeData: IShapeBase) => IShapeBase, selected: boolean, drawLabel: boolean) => IShapeBase;
     getAnnotationData: () => IAnnotation;
     adjustMark: (adjustBase: IShapeAdjustBase) => void;
     setComment: (comment: string) => void;
@@ -45,7 +45,7 @@ export declare class RectShape implements IShape {
     onDragStart: (positionX: number, positionY: number) => void;
     onDrag: (positionX: number, positionY: number) => void;
     checkBoundary: (positionX: number, positionY: number) => boolean;
-    paint: (canvas2D: CanvasRenderingContext2D, calculateTruePosition: (shapeData: IShapeBase) => IShapeBase, selected: boolean) => {
+    paint: (canvas2D: CanvasRenderingContext2D, calculateTruePosition: (shapeData: IShapeBase) => IShapeBase, selected: boolean, drawLabel: boolean) => {
         x: number;
         y: number;
         width: number;

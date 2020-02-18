@@ -209,7 +209,7 @@ var RectShape = function RectShape(_data, onChange) {
     return false;
   });
 
-  _defineProperty(this, "paint", function (canvas2D, calculateTruePosition, selected) {
+  _defineProperty(this, "paint", function (canvas2D, calculateTruePosition, selected, drawLabel) {
     var mark = _this.annotationData.mark;
 
     var _calculateTruePositio = calculateTruePosition(mark),
@@ -232,7 +232,7 @@ var RectShape = function RectShape(_data, onChange) {
     } else {
       var _comment = _this.annotationData.comment;
 
-      if (_comment) {
+      if (_comment && drawLabel) {
         canvas2D.font = "".concat(shapeStyle.fontSize, "px ").concat(shapeStyle.fontFamily);
         var metrics = canvas2D.measureText(_comment);
         canvas2D.save();
@@ -904,7 +904,7 @@ function (_React$Component) {
 
             var isSelected = item.getAnnotationData().id === _this.selectedId;
 
-            var _item$paint = item.paint(_this.canvas2D, _this.calculateShapePosition, isSelected),
+            var _item$paint = item.paint(_this.canvas2D, _this.calculateShapePosition, isSelected, _this.props.drawLabel),
                 x = _item$paint.x,
                 y = _item$paint.y,
                 height = _item$paint.height;
@@ -1460,7 +1460,8 @@ _defineProperty(ReactPictureAnnotation, "defaultProps", {
       onDelete: onDelete
     });
   },
-  editable: false
+  editable: false,
+  drawLabel: true
 });
 var getPinchMidpoint = function getPinchMidpoint(touches) {
   var touch1 = touches[0];
