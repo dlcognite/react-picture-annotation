@@ -630,8 +630,19 @@
     });
 
     _defineProperty(this, "onMouseUp", function () {
-      var setAnnotationState = _this.context.setAnnotationState;
+      var _this$context = _this.context,
+          shapes = _this$context.shapes,
+          setAnnotationState = _this$context.setAnnotationState,
+          selectedId = _this$context.selectedId,
+          onAnnotationUpdate = _this$context.props.onAnnotationUpdate;
       setAnnotationState(new DefaultAnnotationState(_this.context));
+
+      if (onAnnotationUpdate) {
+        var currentShape = shapes.find(function (el) {
+          return el.getAnnotationData().id === selectedId;
+        });
+        onAnnotationUpdate(currentShape.getAnnotationData());
+      }
     });
 
     _defineProperty(this, "onMouseLeave", function () {

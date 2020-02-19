@@ -9,8 +9,12 @@ export default class TransformationState {
             }
         };
         this.onMouseUp = () => {
-            const { setAnnotationState } = this.context;
+            const { shapes, setAnnotationState, selectedId, props: { onAnnotationUpdate } } = this.context;
             setAnnotationState(new DefaultAnnotationState(this.context));
+            if (onAnnotationUpdate) {
+                const currentShape = shapes.find(el => el.getAnnotationData().id === selectedId);
+                onAnnotationUpdate(currentShape.getAnnotationData());
+            }
         };
         this.onMouseLeave = () => this.onMouseUp();
         this.context = context;
