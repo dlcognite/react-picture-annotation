@@ -571,6 +571,8 @@
 
     _classCallCheck(this, DraggingAnnotationState);
 
+    _defineProperty(this, "hasMoved", void 0);
+
     _defineProperty(this, "context", void 0);
 
     _defineProperty(this, "onMouseDown", function () {
@@ -584,6 +586,7 @@
       var currentShape = shapes.find(function (el) {
         return el.getAnnotationData().id === selectedId;
       });
+      _this.hasMoved = true;
       currentShape.onDrag(positionX, positionY);
     });
 
@@ -595,7 +598,7 @@
           onAnnotationUpdate = _this$context2.props.onAnnotationUpdate;
       setAnnotationState(new DefaultAnnotationState(_this.context));
 
-      if (onAnnotationUpdate) {
+      if (onAnnotationUpdate && _this.hasMoved) {
         var currentShape = shapes.find(function (el) {
           return el.getAnnotationData().id === selectedId;
         });
@@ -608,6 +611,7 @@
     });
 
     this.context = context;
+    this.hasMoved = false;
   };
 
   var TransformationState = function TransformationState(context) {
