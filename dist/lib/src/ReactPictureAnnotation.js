@@ -99,7 +99,7 @@ export default class ReactPictureAnnotation extends React.Component {
                                 height: `calc(${this.props.height}px - ${y +
                                     height +
                                     2 * shapeStyle.margin}px)`,
-                                overflow: "scroll"
+                                overflow: "auto"
                             }
                         });
                     }

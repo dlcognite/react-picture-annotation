@@ -939,7 +939,7 @@ function (_React$Component) {
                   left: x,
                   top: y + height + shapeStyle.margin,
                   height: "calc(".concat(_this.props.height, "px - ").concat(y + height + 2 * shapeStyle.margin, "px)"),
-                  overflow: "scroll"
+                  overflow: "auto"
                 }
               });
             }
