@@ -938,7 +938,7 @@ function (_React$Component) {
                 inputPosition: {
                   left: x,
                   top: y + height + shapeStyle.margin,
-                  height: "calc(".concat(_this.props.height, "px - ").concat(y + height + 2 * shapeStyle.margin, "px)"),
+                  maxHeight: "calc(".concat(_this.props.height, "px - ").concat(y + height + 2 * shapeStyle.margin, "px)"),
                   overflow: "auto"
                 }
               });
