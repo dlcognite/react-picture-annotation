@@ -129,6 +129,8 @@ export default class ReactPictureAnnotation extends React.Component {
                         onAnnotationDelete(annotation.getAnnotationData());
                     }
                 }
+                this.selectedId = null;
+                this.onShapeChange();
             }
         };
         this.syncAnnotationData = () => {
@@ -182,6 +184,7 @@ export default class ReactPictureAnnotation extends React.Component {
             if (this.props.editable) {
                 const selectedShapeIndex = this.shapes.findIndex(item => item.getAnnotationData().id === this.selectedId);
                 this.shapes[selectedShapeIndex].getAnnotationData().comment = comment;
+                this.selectedId = null;
                 this.onShapeChange();
             }
         };

@@ -1001,6 +1001,10 @@ function (_React$Component) {
             onAnnotationDelete(_annotation.getAnnotationData());
           }
         }
+
+        _this.selectedId = null;
+
+        _this.onShapeChange();
       }
     });
 
@@ -1107,6 +1111,7 @@ function (_React$Component) {
         });
 
         _this.shapes[selectedShapeIndex].getAnnotationData().comment = comment;
+        _this.selectedId = null;
 
         _this.onShapeChange();
       }

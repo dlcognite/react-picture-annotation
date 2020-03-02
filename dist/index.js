@@ -1007,6 +1007,10 @@
               onAnnotationDelete(_annotation.getAnnotationData());
             }
           }
+
+          _this.selectedId = null;
+
+          _this.onShapeChange();
         }
       });
 
@@ -1113,6 +1117,7 @@
           });
 
           _this.shapes[selectedShapeIndex].getAnnotationData().comment = comment;
+          _this.selectedId = null;
 
           _this.onShapeChange();
         }
