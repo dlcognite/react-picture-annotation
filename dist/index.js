@@ -195,10 +195,12 @@
     });
 
     _defineProperty(this, "onDrag", function (positionX, positionY) {
-      _this.annotationData.mark.x = positionX - _this.dragStartOffset.offsetX;
-      _this.annotationData.mark.y = positionY - _this.dragStartOffset.offsetY;
+      if (_this.dragStartOffset) {
+        _this.annotationData.mark.x = positionX - _this.dragStartOffset.offsetX;
+        _this.annotationData.mark.y = positionY - _this.dragStartOffset.offsetY;
 
-      _this.onChangeCallBack();
+        _this.onChangeCallBack();
+      }
     });
 
     _defineProperty(this, "checkBoundary", function (positionX, positionY) {
@@ -645,7 +647,10 @@
         var currentShape = shapes.find(function (el) {
           return el.getAnnotationData().id === selectedId;
         });
-        onAnnotationUpdate(currentShape.getAnnotationData());
+
+        if (currentShape) {
+          onAnnotationUpdate(currentShape.getAnnotationData());
+        }
       }
     });
 

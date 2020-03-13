@@ -19,9 +19,11 @@ export class RectShape {
             };
         };
         this.onDrag = (positionX, positionY) => {
-            this.annotationData.mark.x = positionX - this.dragStartOffset.offsetX;
-            this.annotationData.mark.y = positionY - this.dragStartOffset.offsetY;
-            this.onChangeCallBack();
+            if (this.dragStartOffset) {
+                this.annotationData.mark.x = positionX - this.dragStartOffset.offsetX;
+                this.annotationData.mark.y = positionY - this.dragStartOffset.offsetY;
+                this.onChangeCallBack();
+            }
         };
         this.checkBoundary = (positionX, positionY) => {
             const { mark: { x, y, width, height } } = this.annotationData;

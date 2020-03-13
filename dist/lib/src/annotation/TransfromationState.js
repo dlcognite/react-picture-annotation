@@ -13,7 +13,9 @@ export default class TransformationState {
             setAnnotationState(new DefaultAnnotationState(this.context));
             if (onAnnotationUpdate) {
                 const currentShape = shapes.find(el => el.getAnnotationData().id === selectedId);
-                onAnnotationUpdate(currentShape.getAnnotationData());
+                if (currentShape) {
+                    onAnnotationUpdate(currentShape.getAnnotationData());
+                }
             }
         };
         this.onMouseLeave = () => this.onMouseUp();
